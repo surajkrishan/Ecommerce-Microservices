@@ -6,6 +6,7 @@ import java.util.Optional;
 import com.meru.offerservice.exception.CustomMessageException;
 import com.meru.offerservice.model.Offer;
 import com.meru.offerservice.service.OfferService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+@Api(tags = "Offer")
 @RestController
 public class OfferController {
 
