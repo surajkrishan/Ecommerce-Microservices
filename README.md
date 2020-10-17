@@ -1,2 +1,2 @@
 # Microservices
-A Java Full Stack Microservices Repo with CI/CD Piplelines
+A Java Full Stack Microservices Repo with Github Actions CI Integrated.
