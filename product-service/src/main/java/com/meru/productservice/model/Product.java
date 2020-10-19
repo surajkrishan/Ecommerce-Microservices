@@ -21,7 +21,7 @@ public class Product {
     @ApiModelProperty(notes = "Auto Generated product unique id", required = false, position = 1)
     @Id
     private String productId;
-    @ApiModelProperty(notes = "Product Name", example = "Diwali Product", required = true, position = 2)
+    @ApiModelProperty(notes = "Product Name", example = "Oneplus 8T", required = true, position = 2)
     @Indexed(unique = true)
     private String productName;
     @ApiModelProperty(notes = "Product price", example = "10", required = true, position = 3)

@@ -6,13 +6,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 public class CustomErrorDetails {
 
     private Date timestamp;
     private String message;
     private String errorDetails;
-
-    public CustomErrorDetails(Date timestamp, String errorDetails, String message) {
-    }
 }
