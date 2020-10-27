@@ -34,7 +34,7 @@ public class ProductService {
 
     public List<Product> getProducts() throws  CustomMessageException {
         List<Product> optionalProduct = productRepo.findAll();
-        if (!optionalProduct.isEmpty()) {
+        if (optionalProduct.isEmpty()) {
             throw new CustomMessageException("Product Not Found in DB");
         }
         return productRepo.findAll();

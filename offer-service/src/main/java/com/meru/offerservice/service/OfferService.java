@@ -34,7 +34,7 @@ public class OfferService {
 
     public List<Offer> getOffers() throws CustomMessageException {
         List<Offer> optionalOffer = offerRepo.findAll();
-        if (!optionalOffer.isEmpty()) {
+        if (optionalOffer.isEmpty()) {
             throw new CustomMessageException("Offer Not Found in DB");
         }
         return offerRepo.findAll();
