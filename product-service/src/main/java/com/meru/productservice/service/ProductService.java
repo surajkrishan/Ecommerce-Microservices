@@ -32,6 +32,14 @@ public class ProductService {
         return productRepo.save(req);
     }
 
+    public Product viewProduct(Product actualProduct,Product offerRes){
+            actualProduct.setPromoCode(offerRes.getPromoCode());
+            actualProduct.setOfferName(offerRes.getOfferName());
+            actualProduct.setDiscount(offerRes.getDiscount());
+            actualProduct.setOfferServicePort(offerRes.getOfferServicePort());
+        return actualProduct;
+    }
+
     public List<Product> getProducts() throws  CustomMessageException {
         List<Product> optionalProduct = productRepo.findAll();
         if (optionalProduct.isEmpty()) {

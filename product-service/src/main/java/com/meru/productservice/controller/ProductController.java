@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.meru.productservice.exception.CustomMessageException;
 import com.meru.productservice.model.Product;
+import com.meru.productservice.proxy.OfferServiceProxy;
 import com.meru.productservice.service.ProductService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 
+	@Autowired
+	private OfferServiceProxy offerServiceProxy;
+
 	@PostMapping("/addProduct")
 	public Product addProduct(@RequestBody Product req) {
 		try {
@@ -37,7 +41,16 @@ public class ProductController {
 	@GetMapping("/getProducts")
 	public List<Product> getProducts() throws CustomMessageException{
 		try {
-			return productService.getProducts();
+			List<Product> productRes =  productService.getProducts();
+			List <Product> offerRes = offerServiceProxy.getOffers();
+
+			for (Product product : productRes) {
+				for (Product offer : offerRes) {
+					product = productService.viewProduct(product, offer);
+				}
+			}
+
+			return productRes;
 		} catch (CustomMessageException e) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND,e.getMessage());
 		}
