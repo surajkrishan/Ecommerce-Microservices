@@ -41,18 +41,16 @@ public class ProductController {
 	@GetMapping("/getProducts")
 	public List<Product> getProducts() throws CustomMessageException{
 		try {
-			List<Product> offerRes = offerServiceProxy.getOffers();
 			List<Product> productRes =  productService.getProducts();
-			Product res =  new Product(productRes.getProductId(),
-					productRes.getProductName(),
-					productRes.getPrice(),
-					productRes.getProductServicePort(),
-					offerRes.getPromoCode(),
-					offerRes.getOfferName(),
-					offerRes.getDiscount(),
-					offerRes.getOfferServicePort()
-					);
-			return (List<Product>) res;
+			List <Product> offerRes = offerServiceProxy.getOffers();
+
+			for (Product product : productRes) {
+				for (Product offer : offerRes) {
+					product = productService.viewProduct(product, offer);
+				}
+			}
+
+			return productRes;
 		} catch (CustomMessageException e) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND,e.getMessage());
 		}

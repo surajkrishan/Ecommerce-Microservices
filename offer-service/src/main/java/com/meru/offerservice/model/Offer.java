@@ -25,7 +25,6 @@ public class Offer {
     @Id
     private String promoCode;
     @ApiModelProperty(notes = "Offer Name", example = "Diwali Offer", required = true, position = 2)
-    @Indexed(unique = true)
     private String offerName;
     @ApiModelProperty(notes = "Offer Discount Percentage", example = "10", required = true, position = 3)
     private BigDecimal discount;

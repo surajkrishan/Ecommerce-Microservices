@@ -24,7 +24,6 @@ public class Product {
     @Id
     private String productId;
     @ApiModelProperty(notes = "Product Name", example = "Oneplus 8T", required = true, position = 2)
-    @Indexed(unique = true)
     private String productName;
     @ApiModelProperty(notes = "Product price", example = "10", required = true, position = 3)
     private BigDecimal price;
@@ -33,7 +32,6 @@ public class Product {
     @ApiModelProperty(notes = "Auto Generated promocode unique id", required = false, position = 1)
     private String promoCode;
     @ApiModelProperty(notes = "Offer Name", example = "Diwali Offer", required = true, position = 2)
-    @Indexed(unique = true)
     private String offerName;
     @ApiModelProperty(notes = "Offer Discount Percentage", example = "10", required = true, position = 3)
     private BigDecimal discount;
