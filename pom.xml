@@ -11,6 +11,7 @@
         <module>offer-service</module>
         <module>product-service</module>
         <module>spring-cloud-config-server</module>
+        <module>netflix-eureka-naming-server</module>
     </modules>
 
 </project>
