@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
-@FeignClient("offer-service")
-@RibbonClient("offer-service")
+@FeignClient(name = "offer-service")
+@RibbonClient(name = "offer-service")
 public interface OfferServiceProxy {
 
     @GetMapping("/getOffers")
