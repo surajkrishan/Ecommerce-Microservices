@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
-@FeignClient(name = "offer-service")
+@FeignClient(name = "netflix-zuul-api-gateway-server")
 @RibbonClient(name = "offer-service")
 public interface OfferServiceProxy {
 
-    @GetMapping("/getOffers")
+    @GetMapping("/offer-service/getOffers")
     public List<Product> getOffers();
 }
