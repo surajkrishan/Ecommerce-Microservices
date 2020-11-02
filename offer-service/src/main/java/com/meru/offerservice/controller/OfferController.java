@@ -6,6 +6,7 @@ import java.util.Optional;
 import com.meru.offerservice.exception.CustomMessageException;
 import com.meru.offerservice.model.Offer;
 import com.meru.offerservice.service.OfferService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +25,16 @@ public class OfferController {
 
 	@Autowired
 	private OfferService offerService;
+
+	@GetMapping("/fault-tolrance")
+	@HystrixCommand(fallbackMethod = "fallbackRetrieveConfiguration")
+	public Offer fault(){
+		throw new RuntimeException("Not Available!");
+	}
+
+	public Offer fallbackRetrieveConfiguration(){
+		return new Offer("Error","Error",null,"Error");
+	}
 
 	@PostMapping("/addOffer")
 	public Offer addOffer(@RequestBody Offer req) {
